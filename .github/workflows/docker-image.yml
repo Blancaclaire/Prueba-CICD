@@ -38,13 +38,14 @@ jobs:
           latest=false
         tags: |
           type=raw,value=daw-front
-          type=raw, value=latest
+          type=raw,value=latest
 
     - name: Build and Push to Docker Hub
       id: docker_build
       uses: docker/build-push-action@v5
       with:
-       context: ./Dockerfile
+       context: .
+       file: ./Dockerfile
        push: true
        tags: ${{ steps.docker_meta.outputs.tags }}
        labels: ${{ steps.docker_meta.outputs.labels }}
